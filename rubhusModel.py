@@ -10,14 +10,13 @@ import torch.nn.functional as F
 from torch.nn import Sequential, Linear, ReLU, GRU
 
 import torch_geometric.transforms as T
-# from torch_geometric.datasets import QM9
 from torch_geometric.nn import NNConv, Set2Set, GCNConv
 from torch_geometric.data import DataLoader
 from torch_geometric.utils import remove_self_loops
 from torch_geometric.data import Dataset, Data, DataLoader
 
 
-from infomax import *
+from utils import *
 
 class JavaEncoder(torch.nn.Module):
     def __init__(self, num_features, dim):
@@ -79,19 +78,6 @@ class PyEncoder(torch.nn.Module):
             feat_map.append(out)
         out = self.set2set(out,batch)
         return out, feat_map[-1]
-
-##### REMOVED FROM THE MAIN SCRIPT
-# class PriorDiscriminator(nn.Module):
-    # def __init__(self, input_dim):
-        # super().__init__()
-        # self.l0 = nn.Linear(input_dim, input_dim)
-        # self.l1 = nn.Linear(input_dim, input_dim)
-        # self.l2 = nn.Linear(input_dim, 1)
-
-    # def forward(self, x):
-        # h = F.relu(self.l0(x))
-        # h = F.relu(self.l1(h))
-        # return torch.sigmoid(self.l2(h))
 
 class FF(nn.Module):
     def __init__(self, input_dim, dim):
@@ -216,8 +202,4 @@ class Net(torch.nn.Module):
         loss = global_global_loss_(g_enc, g_enc1, data.edge_index2.long(),batch, measure)
 
         return loss
-    # def align_unsup_sup_loss(self, data):
-        # y, M =   self.encoder(data)
-        # y_, M_ = self.unsup_encoder(data)
-        
-        # return  F.mse_loss(y, y_)
+
