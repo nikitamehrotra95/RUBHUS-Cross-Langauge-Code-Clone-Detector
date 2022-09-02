@@ -4,7 +4,7 @@
 This repository contains the source code for the paper - "Improving Cross-Language Code CloneDetection via Code Representation Learning and Graph Neural Networks"
 
 ## 📜 Code Organisation 
-Current organisation contains files pertaining to models (`rubhusModel.py, baselineModel.py`), trainers (`trainerBaseline.py , trainerRubhus.py`) and some helper function file.  
+Current organisation contains files pertaining to models (`rubhusModel.py`), trainers (` trainerRubhus.py`) and some helper function file.  
 
     Repository
     ├── helper functions
@@ -15,9 +15,7 @@ After setting up the repository, it would contain dataset files as well.
 
 ## ⚙ Setting Up 
 
-### 1. Clone the repo
-
-       git clone https://github.com/Akash-Sharma-1/Rubhus-Cross-Langauge-Clone-Detector.git
+### 1. Download the repo
 
 ### 2. Installing Dependencies
 
@@ -64,12 +62,10 @@ The hyperparameter variables explanation table is as follows :
 ### 2. Training RUBHUS Model
        python3 trainerRubhus.py
 
-### 3. Training Baseline Model
-       python3 trainerBaseline.py
 
 
 ## ⭐ About the original setup 
-- In our experiments we have trained Rubhus and Baseline Models for Java Python Dataset and for C-Java Dataset separately. 
+- In our experiments we have trained Rubhus for Java Python Dataset and for C-Java Dataset separately. 
 - The hyperparameters used in the original experiments as well as in this source code are reported in the paper.
 - We have used GTx 2080Ti GPU to run our experiments. The time analysis of the tool also has been reported in the paper.
 
