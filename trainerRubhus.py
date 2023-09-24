@@ -282,7 +282,7 @@ def seed_everything(seed=1234):
 
 if __name__ == '__main__':
     seed_everything()
-    from modelCloneDetection import Net
+    from rubhusModel import Net
 
     # ============
     # Hyperparameters
@@ -304,20 +304,6 @@ if __name__ == '__main__':
     dataset=dataset.shuffle()
     print('num_features : {}\n'.format(dataset.num_features))
     dataset_num_features = max(dataset.num_features, 1)
-
-    # if dataset.data.x is None:
-    #     max_degree = 0
-    #     degs = []
-    #     for data in dataset:
-    #         degs += [degree(data.edge_index[0], dtype=torch.long)]
-    #         max_degree = max(max_degree, degs[-1].max().item())
-
-    #     if max_degree < 1000:
-    #         dataset.transform = T.OneHotDegree(max_degree)
-    #     else:
-    #         deg = torch.cat(degs, dim=0).to(torch.float)
-    #         mean, std = deg.mean().item(), deg.std().item()
-    #         dataset.transform = NormalizedDegree(mean, std)
 
 
     # Normalize targets to mean = 0 and std = 1.
@@ -407,12 +393,6 @@ if __name__ == '__main__':
         # change this
         torch.save({'state_dict': model.state_dict(),'optimizer' : optimizer.state_dict()},"cloneDetectionModels/Bi-meanTeacher_global_bigDB_global_avg_"+str(epoch)+".pth")
 
-            # change this
-        # with open('cloneDetection_supervised-meanTeacher.log', 'a+') as f:
-        #     f.write('{},{},{},{},{},{},{},{}\n'.format(target,1000,use_unsup_loss,separate_encoder,0.001,0,val_error,test_error))
-        #     f.write('\n')
-        #     f.write("Total time taken for evaluation is: ",(end_time - start_time)/3600,"hrs.")
-        #     f.write('\n')
 
     
     tb.close()
